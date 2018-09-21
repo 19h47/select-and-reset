@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Select and reset</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<form action="">
+			<!-- Musics -->
+			<div class="js-select-and-reset" data-param="musics">
+				
+				<button class="js-label" type="button">Musics <span class="js-counter">0</span></button>
+
+				<ul class="js-fake-select">
+					<li class="">
+						<button class="js-fake-option" type="button" data-fake-value="metal" data-fake-label="Metal">
+							Metal
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="hip-hop" data-fake-label="Hip-hop">
+							Hip-hop
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="jazz" data-fake-label="Jazz">
+							Jazz
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="rock" data-fake-label="Rock">
+							Rock
+						</button>
+					</li>
+				</ul>
+
+				<div class="js-select" style="display: none;">
+					<input type="checkbox" name="musics[]" value="metal" data-value="metal" data-label="Metal">
+					<input type="checkbox" name="musics[]" value="hip-hop" data-value="hip-hop" data-label="Hip-hop">
+					<input type="checkbox" name="musics[]" value="jazz" data-value="jazz" data-label="Jazz">
+					<input type="checkbox" name="musics[]" value="rock" data-value="rock" data-label="Rock">
+				</div>
+			</div>
+
+			<!-- Dogs -->
+			<div class="js-select-and-reset" data-param="dogs">
+				
+				<button class="js-label" type="button">Dogs <span class="js-counter">0</span></button>
+
+				<ul class="js-fake-select">
+					<li class="">
+						<button class="js-fake-option" type="button" data-fake-value="bouvier" data-fake-label="Bouvier">
+							Bouvier
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="boxer" data-fake-label="Boxer">
+							Boxer
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="corgi" data-fake-label="Corgi">
+							Corgi
+						</button>
+					</li>
+					<li>
+						<button class="js-fake-option" type="button" data-fake-value="beagle" data-fake-label="Beagle">
+							Beagle
+						</button>
+					</li>
+				</ul>
+
+				<div class="js-select" style="display: none;">
+					<input type="checkbox" name="dogs[]" value="bouvier" data-value="bouvier" data-label="Bouvier">
+					<input type="checkbox" name="dogs[]" value="boxer" data-value="boxer" data-label="Boxer">
+					<input type="checkbox" name="dogs[]" value="corgi" data-value="corgi" data-label="Corgi">
+					<input type="checkbox" name="dogs[]" value="beagle" data-value="beagle" data-label="Beagle">
+				</div>
+			</div>
+
+			<button type="submit">Submit</button>
+		</form>
+
+		<div class="js-result">
+			<div class="js-counter">0</div>
+			<div class="js-input"></div>
+		</div>
+
+		<script src="select.js"></script>
+		<script src="result.js"></script>
+		<script>
+			// Result
+			const result = document.querySelector('.js-result');
+			const ResultInstance = new Result(result);
+			ResultInstance.init();
+
+			// Select
+			const selects = document.querySelectorAll('.js-select-and-reset');
+
+			for (let i = 0; i < selects.length; i += 1) {
+				const SelectInstance = new Select(selects[i]);
+				SelectInstance.init();
+			}
+		</script>
+	</body>
+</html>
