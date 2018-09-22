@@ -4,6 +4,10 @@
 
 ![Select and reset](select-and-reset.png)
 
+**Select and reset** is a small module, shipped with three submodules allowing to make _fake selects_ with a toolbar result. It also allows to toogle result between select and result bar.
+
+An another module is shipped, **Checkbox**, and it allows to create _fake checkboxes_.
+
 ## Installation
 
 ```
