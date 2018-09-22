@@ -16,8 +16,9 @@ class Select {
 		this.$select = this.$cont.querySelector('.js-select');
 		this.$label = this.$cont.querySelector('.js-label');
 		this.$counter = this.$cont.querySelector('.js-counter');
+		
 		// @todo Make it an option
-		this.$resultFilters = document.querySelector('.js-result');
+		this.$result = document.querySelector('.js-result');
 
 		this.param = this.$cont.getAttribute('data-param');
 
@@ -39,7 +40,7 @@ class Select {
 
 
 	/**
-	 * SelectBlocks.initEvents
+	 * Selects.initEvents
 	 *
 	 * @return	void
 	 */
@@ -58,7 +59,7 @@ class Select {
 
 
 	/**
-	 * SelectBlock.onClick
+	 * Select.onClick
 	 *
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
@@ -71,7 +72,7 @@ class Select {
 
 
 	/**
-	 * SelectBlock.onSelect
+	 * Select.onSelect
 	 *
 	 * @param	obj		element		DOM object
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
@@ -84,9 +85,9 @@ class Select {
 			// console.dir(label);
 
 			// @see Result.js
-			this.$resultFilters.removeItem(label);
+			return this.$result.removeItem(label);
 
-			return this.removeItem(element);
+			// return this.removeItem(element);
 		}
 
 		this.addItem(element, label);
@@ -96,15 +97,16 @@ class Select {
 
 
 	/**
-	 * SelectBlock.removeItem
+	 * Select.removeItem
 	 *
 	 * @param	obj		element		DOM object
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	removeItem(element) {
+		// console.info('Select.removeItem');
+
 		const value = element.getAttribute('data-fake-value');
 		const $checkbox = this.$select.querySelector(`[data-value="${value}"]`);
-
 
 		// Remove from options selected array
 		this.selectedOptions.splice(
@@ -117,14 +119,14 @@ class Select {
 		$checkbox.checked = false;
 		$checkbox.removeAttribute('checked');
 
-		this.setCounter();
-
 		element.classList.remove('is-selected');
+
+		this.setCounter();
 	}
 
 
 	/**
-	 * SelectBlock.addItem
+	 * Select.addItem
 	 *
 	 * @param	obj		element		DOM object
 	 * @param	str		label
@@ -139,16 +141,16 @@ class Select {
 
 		$checkbox.checked = true;
 		$checkbox.setAttribute('checked', true);
-
+		
 		// @see Common/ResultFilters.js
-		this.$resultFilters.addItem(label, this.param);
+		this.$result.addItem(label, this.param);
 
 		this.setCounter();
 	}
 
 
 	/**
-	 * SelectBlock.onPageReady
+	 * Select.onPageReady
 	 *
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
@@ -161,16 +163,18 @@ class Select {
 
 				this.selectedOptions.push(value);
 
+				
 				this.$options[i].classList.add('is-selected');
-				this.$resultFilters.addItem(label, this.param);
+				this.$result.addItem(label, this.param);
 
 				this.setCounter();
 			}
 		}
 	}
 
+
 	/**
-	 * SelectBlock.setCounter
+	 * Select.setCounter
 	 *
 	 * Update result counter
 	 *

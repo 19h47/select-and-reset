@@ -91,7 +91,7 @@ class Result {
 		element.remove();
 
 		// Finaly, update counter
-		return this.updateCounter();
+		this.updateCounter();
 	}
 
 
