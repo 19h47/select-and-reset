@@ -4,7 +4,7 @@
  * @param	obj		element		DOM element
  * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
-class Result {
+export default class Result {
 	constructor(element) {
 		this.$cont = element;
 	}
@@ -14,7 +14,8 @@ class Result {
 		if (this.$cont === null || this.$cont === undefined) return false;
 
 		this.$input = this.$cont.querySelector('.js-input');
-		this.$counter = this.$cont.querySelector('.js-counter');
+		// @todo Make it an option
+		this.$counter = this.$cont.querySelector('.js-counter') || false;
 
 		// Attach method to the container
 		this.$cont.addItem = this.addItem.bind(this);
@@ -35,6 +36,9 @@ class Result {
 		const item = document.createElement('button');
 
 		// Create wrapper
+		// @todo Make this template manageable
+		// @todo Refactor this attributes
+		item.classList.add('Results__item');
 		item.setAttribute('data-children-name', name);
 		item.setAttribute('data-parent-name', param);
 		item.type = 'button';
@@ -51,9 +55,17 @@ class Result {
 		this.$input.appendChild(item);
 
 		// Update counter
-		this.updateCounter();
+		if (!this.$counter === false) {
+			this.updateCounter();
+		}
 	}
 
+
+	/**
+	 * Update counter
+	 *
+	 * @return	void
+	 */
 	updateCounter() {
 		this.$counter.innerHTML = this.$input.children.length;
 	}
@@ -62,13 +74,14 @@ class Result {
 	/**
 	 * Result.removeItem
 	 *
-	 * @param	obj / str	event
+	 * @param	obj | str	event
 	 * @access	static
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	removeItem(event) {
 		let element = null;
 
+		// @todo reorder this code
 		if (typeof event === 'string') {
 			element = document.querySelector(`[data-children-name="${event}"]`);
 		} else {
@@ -84,24 +97,36 @@ class Result {
 		const parent = document.querySelector(`[data-param="${param}"]`);
 		const children = parent.querySelector(`[data-fake-label="${name}"]`);
 
-		// @see Select
+		// @see Select.js
 		parent.removeItem(children);
 
 		// Then remove item itself
 		element.remove();
 
 		// Finaly, update counter
-		this.updateCounter();
+		if (!this.$counter === false) {
+			this.updateCounter();
+		}
 	}
 
 
 	/**
 	 * Result.setTemplate
 	 *
+	 * @todo	Make this template manageable
 	 * @param	str	name
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	static setTemplate(name) {
-		return `<span style="pointer-events: none;">${name}</span>`;
+		return `
+			<span class="d-inline-block vertical-align-middle">
+				${name}
+			</span>
+			<span class="Results__close" style="pointer-events: none;">
+				<svg aria-hidden="true" class="delete" style="pointer-events: none;">
+					<use xlink:href="#delete" href="#delete"></use>
+				</svg>
+			</span>
+		`;
 	}
 }

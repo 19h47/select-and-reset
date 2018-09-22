@@ -4,10 +4,11 @@
  * @param	element		DOM element
  * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
-class Select {
+export default class Select {
 	constructor(element) {
 		this.$cont = element;
 	}
+
 	init() {
 		// No need to go further if this.$cont doesn't exist
 		if (this.$cont === null || this.$cont === undefined) return false;
@@ -16,7 +17,7 @@ class Select {
 		this.$select = this.$cont.querySelector('.js-select');
 		this.$label = this.$cont.querySelector('.js-label');
 		this.$counter = this.$cont.querySelector('.js-counter');
-		
+
 		// @todo Make it an option
 		this.$result = document.querySelector('.js-result');
 
@@ -36,6 +37,8 @@ class Select {
 		this.$cont.removeItem = this.removeItem.bind(this);
 
 		this.initEvents();
+
+		return true;
 	}
 
 
@@ -55,6 +58,29 @@ class Select {
 		this.$label.addEventListener('click', () => {
 			this.onClick();
 		});
+
+		// CLick outside this.$cont
+		// @see https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
+		document.addEventListener('click', (event) => {
+			let targetElement = event.target; // clicked element
+
+			do {
+				if (targetElement === this.$cont) {
+					// This is a click inside. Do nothing, just return.
+					return false;
+				}
+				// Go up the DOM
+				targetElement = targetElement.parentNode;
+			} while (targetElement);
+
+			// This is a click outside.
+			return this.$cont.classList.remove('is-active');
+		});
+
+		// DOM ready
+		document.addEventListener('DOMContentLoaded', () => {
+			this.onPageReady();
+		});
 	}
 
 
@@ -65,9 +91,17 @@ class Select {
 	 */
 	onClick() {
 		if (this.$cont.classList.contains('is-active')) {
-			return this.$cont.classList.remove('is-active');
+			return this.deactivateCont();
 		}
+		return this.activateCont();
+	}
+
+	activateCont() {
 		return this.$cont.classList.add('is-active');
+	}
+
+	deactivateCont() {
+		return this.$cont.classList.remove('is-active');
 	}
 
 
@@ -86,8 +120,6 @@ class Select {
 
 			// @see Result.js
 			return this.$result.removeItem(label);
-
-			// return this.removeItem(element);
 		}
 
 		this.addItem(element, label);
@@ -141,8 +173,8 @@ class Select {
 
 		$checkbox.checked = true;
 		$checkbox.setAttribute('checked', true);
-		
-		// @see Common/ResultFilters.js
+
+		// @see Result.js
 		this.$result.addItem(label, this.param);
 
 		this.setCounter();
@@ -155,7 +187,7 @@ class Select {
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	onPageReady() {
-		// Set select option
+		// Set selected options
 		for (let i = 0; i < this.count; i += 1) {
 			if (this.$select.children[i].checked) {
 				const value = this.$select.children[i].getAttribute('data-value');
@@ -163,7 +195,6 @@ class Select {
 
 				this.selectedOptions.push(value);
 
-				
 				this.$options[i].classList.add('is-selected');
 				this.$result.addItem(label, this.param);
 

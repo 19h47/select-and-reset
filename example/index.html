@@ -3,13 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Select and reset</title>
-		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<form action="">
-			<!-- Musics -->
+			<!-- Select -->
 			<div class="js-select-and-reset" data-param="musics">
-				
+
 				<button class="js-label" type="button">Musics <span class="js-counter">0</span></button>
 
 				<ul class="js-fake-select">
@@ -43,9 +42,9 @@
 				</div>
 			</div>
 
-			<!-- Dogs -->
+			<!-- Select -->
 			<div class="js-select-and-reset" data-param="dogs">
-				
+
 				<button class="js-label" type="button">Dogs <span class="js-counter">0</span></button>
 
 				<ul class="js-fake-select">
@@ -79,6 +78,16 @@
 				</div>
 			</div>
 
+			<div class="js-checkbox-and-reset">
+				<button class="js-button" type="button" data-value="New">
+					New
+				</button>
+
+				<div class="js-checkbox" style="display: none;">
+					<input type="checkbox" name="new" value="0" data-value="1" data-label="New">
+				</div>
+			</div>
+
 			<button type="submit">Submit</button>
 		</form>
 
@@ -87,20 +96,27 @@
 			<div class="js-input"></div>
 		</div>
 
-		<script src="select.js"></script>
-		<script src="result.js"></script>
+		<script src="../dist/main.js"></script>
 		<script>
 			// Result
 			const result = document.querySelector('.js-result');
-			const ResultInstance = new Result(result);
+			const ResultInstance = new SelectAndReset.default.Result(result);
 			ResultInstance.init();
 
 			// Select
 			const selects = document.querySelectorAll('.js-select-and-reset');
 
 			for (let i = 0; i < selects.length; i += 1) {
-				const SelectInstance = new Select(selects[i]);
+				const SelectInstance = new SelectAndReset.default.Select(selects[i]);
 				SelectInstance.init();
+			}
+
+			// Checkbox
+			const checkboxes = document.querySelectorAll('.js-checkbox-and-reset');
+
+			for (let i = 0; i < checkboxes.length; i += 1) {
+				const CheckboxInstance = new SelectAndReset.default.Checkbox(checkboxes[i]);
+				CheckboxInstance.init();
 			}
 		</script>
 	</body>

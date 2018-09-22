@@ -14,7 +14,7 @@ npm install select-reset
 
 ```javascript
 
-import SelectAndReset from 'select-and-reset';
+import { Checkbox, Result, Select } from 'select-and-reset';
 
 ```
 
@@ -45,7 +45,7 @@ for (let i = 0; i < selects.length; i += 1) {
 
 ### Checkbox
 
-```
+```javascript
 
 const checkboxes = document.querySelectorAll('.js-checkbox-and-reset');
 
