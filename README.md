@@ -18,14 +18,12 @@ import { Checkbox, Result, Select } from 'select-and-reset';
 
 ```
 
-`SelectAndReset` have three methods:
-
 ### Result
 
 ```javascript
 
 const result = document.querySelector('.js-result');
-const ResultInstance = new SelectAndReset.default.Result(result);
+const ResultInstance = new Result(result);
 ResultInstance.init();
 
 ```
@@ -37,7 +35,7 @@ ResultInstance.init();
 const selects = document.querySelectorAll('.js-select-and-reset');
 
 for (let i = 0; i < selects.length; i += 1) {
-	const SelectInstance = new SelectAndReset.default.Select(selects[i]);
+	const SelectInstance = new Select(selects[i]);
 	SelectInstance.init();
 }
 
@@ -50,7 +48,7 @@ for (let i = 0; i < selects.length; i += 1) {
 const checkboxes = document.querySelectorAll('.js-checkbox-and-reset');
 
 for (let i = 0; i < checkboxes.length; i += 1) {
-	const CheckboxInstance = new SelectAndReset.default.Checkbox(checkboxes[i]);
+	const CheckboxInstance = new Checkbox(checkboxes[i]);
 	CheckboxInstance.init();
 }
 
