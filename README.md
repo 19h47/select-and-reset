@@ -24,6 +24,8 @@ import { Checkbox, Result, Select } from 'select-and-reset';
 
 ### Result
 
+The `Result.js` class takes an `DOM element` argument and an optional `object` containing options.
+
 ```javascript
 
 const result = document.querySelector('.js-result');
@@ -37,9 +39,9 @@ ResultInstance.init();
 
 ##### template
 
-A function containing le template. The function needs a `name`argument.
+A function containing template. The function needs a `name` argument.
 
-```
+```javascript
 
 const template = name => `<span style="pointer-events: none;">${name}</span>`;
 
@@ -47,9 +49,11 @@ const template = name => `<span style="pointer-events: none;">${name}</span>`;
 
 #### buttonClass
 
-The class og the button result. Default is `empty`.
+The class of the button result. Default is `empty`.
 
 ### Select
+
+The `Select.js` class takes an `DOM element` argument.
 
 ```javascript
 
@@ -63,6 +67,8 @@ for (let i = 0; i < selects.length; i += 1) {
 ```
 
 ### Checkbox
+
+The `Checkbox.js` class takes an `DOM element` argument.
 
 ```javascript
 
