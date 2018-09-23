@@ -5,8 +5,17 @@
  * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 export default class Result {
-	constructor(element) {
+	constructor(element, options) {
 		this.$cont = element;
+
+		// Default template
+		const template = name => `<span style="pointer-events: none;">${name}</span>`;
+
+		// Set default options
+		this.options = Object.assign({
+			template: options.template || template,
+			buttonClass: options.buttonClass,
+		}, options);
 	}
 
 	init() {
@@ -36,9 +45,10 @@ export default class Result {
 		const item = document.createElement('button');
 
 		// Create wrapper
-		// @todo Make this template manageable
 		// @todo Refactor this attributes
-		item.classList.add('Results__item');
+		if (this.options.buttonClass) {
+			item.classList.add(this.options.buttonClass);
+		}
 		item.setAttribute('data-children-name', name);
 		item.setAttribute('data-parent-name', param);
 		item.type = 'button';
@@ -49,7 +59,7 @@ export default class Result {
 		});
 
 		// Append template to wrapper
-		item.innerHTML = Result.setTemplate(name);
+		item.innerHTML = this.setTemplate(name);
 
 		// Then append to container
 		this.$input.appendChild(item);
@@ -113,20 +123,12 @@ export default class Result {
 	/**
 	 * Result.setTemplate
 	 *
-	 * @todo	Make this template manageable
-	 * @param	str	name
+	 * @param	str	name	options template
+	 * @retrun
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
-	static setTemplate(name) {
-		return `
-			<span class="d-inline-block vertical-align-middle">
-				${name}
-			</span>
-			<span class="Results__close" style="pointer-events: none;">
-				<svg aria-hidden="true" class="delete" style="pointer-events: none;">
-					<use xlink:href="#delete" href="#delete"></use>
-				</svg>
-			</span>
-		`;
+	// eslint-disable-next-line
+	setTemplate(name) {
+		return this.options.template(name);
 	}
 }

@@ -27,10 +27,27 @@ import { Checkbox, Result, Select } from 'select-and-reset';
 ```javascript
 
 const result = document.querySelector('.js-result');
-const ResultInstance = new Result(result);
+const options = {};
+const ResultInstance = new Result(result, options);
 ResultInstance.init();
 
 ```
+
+#### Options
+
+##### template
+
+A function containing le template. The function needs a `name`argument.
+
+```
+
+const template = name => `<span style="pointer-events: none;">${name}</span>`;
+
+```
+
+#### buttonClass
+
+The class og the button result. Default is `empty`.
 
 ### Select
 

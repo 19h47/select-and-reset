@@ -1,12 +1,12 @@
 {
 	"name": "select-and-reset",
-	"version": "2.0.2",
+	"version": "2.0.5",
 	"description": "Select and reset",
 	"main": "dist/main.js",
 	"scripts": {
 		"prod": "./bin/production",
 		"dev": "./bin/development",
-		"publish": "./bin/publish"
+		"deploy": "./bin/deploy"
 	},
 	"repository": {
 		"type": "git",
