@@ -30,7 +30,6 @@ export default class Checkbox {
 		});
 
 		if (this.$checkbox.checked) {
-			// eslint-disable-next-line
 			this.activate();
 		}
 	}

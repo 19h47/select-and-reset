@@ -32,7 +32,7 @@ export default class Select {
 
 		this.count = this.$options.length;
 
-		// Attach method to the container
+		// Bind properties to the container object
 		this.$cont.addItem = this.addItem.bind(this);
 		this.$cont.removeItem = this.removeItem.bind(this);
 

@@ -1,14 +1,6 @@
 // Import stylesheets
 // import 'src/style.scss';
 
-import Checkbox from 'src/Checkbox';
-import Result from 'src/Result';
-import Select from 'src/Select';
-
-const SelectAndReset = {
-	Checkbox,
-	Result,
-	Select,
-};
-
-export default SelectAndReset;
+export { default as Checkbox } from 'src/Checkbox';
+export { default as Result } from 'src/Result';
+export { default as Select } from 'src/Select';
