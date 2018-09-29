@@ -83,4 +83,4 @@ for (let i = 0; i < checkboxes.length; i += 1) {
 
 ### Example
 
-An example is located right [here](example/index.html), see sources.
+An example is located right [here](https://19h47.github.io/select-and-reset/), see [sources](/example/index.html).
