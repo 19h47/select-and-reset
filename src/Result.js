@@ -47,7 +47,7 @@ export default class Result {
 		// Create wrapper
 		// @todo Refactor this attributes
 		if (this.options.buttonClass) {
-			item.classList.add(this.options.buttonClass);
+			item.className += `${this.options.buttonClass}`;
 		}
 		item.setAttribute('data-children-name', name);
 		item.setAttribute('data-parent-name', param);

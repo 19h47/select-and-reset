@@ -54,6 +54,7 @@ export default class Checkbox {
 
 		this.isOpen = true;
 		this.$cont.classList.add('is-active');
+		this.$button.classList.add('is-selected');
 
 		this.$checkbox.value = 1;
 		this.$checkbox.setAttribute('checked', true);
@@ -72,6 +73,7 @@ export default class Checkbox {
 
 		this.isOpen = false;
 		this.$cont.classList.remove('is-active');
+		this.$button.classList.remove('is-selected');
 
 		this.$checkbox.value = 0;
 		this.$checkbox.removeAttribute('checked');
