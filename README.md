@@ -11,7 +11,7 @@ An another module is shipped, **Checkbox**, and it allows to create _fake checkb
 ## Installation
 
 ```
-npm install select-reset
+npm install select-and-reset
 ```
 
 ## Usage
