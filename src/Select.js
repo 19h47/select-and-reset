@@ -16,9 +16,10 @@ export default class Select {
 		// DOM elements
 		this.$select = this.$cont.querySelector('.js-select');
 		this.$label = this.$cont.querySelector('.js-label');
-		this.$counter = this.$cont.querySelector('.js-counter');
+		this.$counter = this.$cont.querySelector('.js-counter') || false;
+		this.$reset = this.$cont.querySelector('.js-reset') || false;
 
-		// @todo Make it an option
+		// @TODO Make it an option
 		this.$result = document.querySelector('.js-result');
 
 		this.param = this.$cont.getAttribute('data-param');
@@ -31,6 +32,7 @@ export default class Select {
 		this.selectedOptions = [];
 
 		this.count = this.$options.length;
+		this.multiple = this.$cont.getAttribute('data-multiple') || true;
 
 		// Bind properties to the container object
 		this.$cont.addItem = this.addItem.bind(this);
@@ -81,6 +83,13 @@ export default class Select {
 		document.addEventListener('DOMContentLoaded', () => {
 			this.onPageReady();
 		});
+
+		// Reset
+		if (this.$reset) {
+			this.$reset.addEventListener('click', () => {
+				this.reset();
+			});
+		}
 	}
 
 
@@ -96,10 +105,18 @@ export default class Select {
 		return this.activateCont();
 	}
 
+
+	/**
+	 * Select.activateCont
+	 */
 	activateCont() {
 		return this.$cont.classList.add('is-active');
 	}
 
+
+	/**
+	 * Select.deactivateCont
+	 */
 	deactivateCont() {
 		return this.$cont.classList.remove('is-active');
 	}
@@ -113,13 +130,20 @@ export default class Select {
 	 */
 	onSelect(element) {
 		const label = element.getAttribute('data-fake-label');
+		const selected = element.classList.contains('is-selected');
 
 		// If element is already selected
-		if (element.classList.contains('is-selected')) {
-			// console.dir(label);
-
+		if (selected) {
 			// @see Result.js
 			return this.$result.removeItem(label);
+		}
+
+		// If multiple is set to false
+		if (this.multiple === 'false') {
+			for (let i = 0; i < this.count; i += 1) {
+				this.removeItem(this.$options[i]);
+				this.$result.removeItem(this.$options[i].getAttribute('data-fake-label'));
+			}
 		}
 
 		this.addItem(element, label);
@@ -153,7 +177,8 @@ export default class Select {
 
 		element.classList.remove('is-selected');
 
-		this.setCounter();
+		// If counter element exist, update it
+		if (this.$counter) this.setCounter();
 	}
 
 
@@ -166,18 +191,19 @@ export default class Select {
 	 */
 	addItem(element, label) {
 		const value = element.getAttribute('data-fake-value');
-		const $checkbox = this.$select.querySelector(`[data-value="${value}"]`);
+		const $select = this.$select.querySelector(`[data-value="${value}"]`);
 
 		// Add from options selected array
 		this.selectedOptions.push(value);
 
-		$checkbox.checked = true;
-		$checkbox.setAttribute('checked', true);
+		$select.checked = true;
+		$select.setAttribute('checked', true);
 
 		// @see Result.js
 		this.$result.addItem(label, this.param);
 
-		this.setCounter();
+		// If $counter element exist, udpate it
+		if (this.$counter) this.setCounter();
 	}
 
 
@@ -198,8 +224,16 @@ export default class Select {
 				this.$options[i].classList.add('is-selected');
 				this.$result.addItem(label, this.param);
 
-				this.setCounter();
+				// If $counter element exist, udpate it
+				if (this.$counter) this.setCounter();
 			}
+		}
+	}
+
+	reset() {
+		for (let i = 0; i < this.count; i += 1) {
+			this.removeItem(this.$options[i]);
+			this.$result.removeItem(this.$options[i].getAttribute('data-fake-label'));
 		}
 	}
 

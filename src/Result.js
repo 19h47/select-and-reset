@@ -23,14 +23,27 @@ export default class Result {
 		if (this.$cont === null || this.$cont === undefined) return false;
 
 		this.$input = this.$cont.querySelector('.js-input');
-		// @todo Make it an option
+
+		// @TODO Make it an option
 		this.$counter = this.$cont.querySelector('.js-counter') || false;
+		this.$reset = this.$cont.querySelector('.js-reset') || false;
 
 		// Bind properties to the container object
 		this.$cont.addItem = this.addItem.bind(this);
 		this.$cont.removeItem = this.removeItem.bind(this);
 
+		this.initEvents();
+
 		return true;
+	}
+
+
+	initEvents() {
+		if (this.$reset) {
+			this.$reset.addEventListener('click', () => {
+				this.reset();
+			});
+		}
 	}
 
 
@@ -45,7 +58,7 @@ export default class Result {
 		const item = document.createElement('button');
 
 		// Create wrapper
-		// @todo Refactor this attributes
+		// @TODO Refactor this attributes
 		if (this.options.buttonClass) {
 			item.className += `${this.options.buttonClass}`;
 		}
@@ -91,15 +104,20 @@ export default class Result {
 	removeItem(event) {
 		let element = null;
 
-		// @todo reorder this code
+		// @TODO reorder this code
 		if (typeof event === 'string') {
 			element = document.querySelector(`[data-children-name="${event}"]`);
 		} else {
 			element = event.target;
 		}
 
+		//
+		if (element === null) {
+			return false;
+		}
+
 		// Select associate filter
-		// @todo rename datas attribute
+		// @TODO rename datas attribute
 		const param = element.getAttribute('data-parent-name');
 		const name = element.getAttribute('data-children-name');
 
@@ -117,8 +135,36 @@ export default class Result {
 		if (!this.$counter === false) {
 			this.updateCounter();
 		}
+
+		return true;
 	}
 
+	reset() {
+		// eslint-disable-next-line
+		const children = this.$input.querySelectorAll('button');
+		// eslint-disable-next-line
+		const length = children.length;
+
+		for (let i = 0; i < length; i += 1) {
+			// Select associate filter
+			// @TODO rename datas attribute
+			const param = children[i].getAttribute('data-parent-name');
+			const name = children[i].getAttribute('data-children-name');
+
+			const parent = document.querySelector(`[data-param="${param}"]`);
+			const child = parent.querySelector(`[data-fake-label="${name}"]`);
+
+			// @see Select.js
+			parent.removeItem(child);
+
+			// Then remove item itself
+			children[i].remove();
+
+			if (!this.$counter === false) {
+				this.updateCounter();
+			}
+		}
+	}
 
 	/**
 	 * Result.setTemplate
