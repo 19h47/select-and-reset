@@ -6,9 +6,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<style>
 			.btn-outline-secondary.is-selected {
-	    		color: #fff;
-	    		background-color: #6c757d;
-	    		border-color: #6c757d;
+				color: #fff;
+				background-color: #6c757d;
+				border-color: #6c757d;
 			}
 		</style>
 	</head>
@@ -48,12 +48,12 @@
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="basilisk" data-fake-label="Basilisk">
 											Basilisk
 										</button>
-								 	</li><!--
+									 </li><!--
 								 --><li class="list-inline-item">
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aboleth" data-fake-label="Aboleth">
 											Aboleth
 										</button>
-								 	</li><!--
+									 </li><!--
 								 --><li class="list-inline-item">
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="chimera" data-fake-label="Chimera">
 											Chimera
@@ -88,12 +88,12 @@
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="zeus" data-fake-label="Zeus">
 											Zeus
 										</button>
-								 	</li><!--
+									 </li><!--
 								 --><li class="list-inline-item">
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="hades" data-fake-label="Hades">
 											Hades
 										</button>
-								 	</li><!--
+									 </li><!--
 								 --><li class="list-inline-item">
 										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="cyclopes" data-fake-label="Cyclopes">
 											Cyclopes
@@ -211,7 +211,7 @@
 			const selects = document.querySelectorAll('.js-select-and-reset');
 
 			for (let i = 0; i < selects.length; i += 1) {
-				const SelectInstance = new SelectAndReset.Select(selects[i]);
+				const SelectInstance = new SelectAndReset.Select(selects[i], { reset: false });
 				SelectInstance.init();
 			}
 
