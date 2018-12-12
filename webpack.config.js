@@ -18,15 +18,16 @@ module.exports = {
 		filename: '[name]/main.js'
 	},
 	devServer: {
-    	contentBase: path.resolve(__dirname, 'dist'),
-    	compress: true,
-    	port: 9000,
+		contentBase: path.resolve(__dirname, 'dist'),
+		compress: true,
+		port: 9000,
 		inline: true,
 	},
 	resolve: {
 		alias: {
 			Utils: path.resolve(__dirname, 'src/utils'),
-			src: path.resolve(__dirname, 'src/')
+			src: path.resolve(__dirname, 'src/'),
+			stylesheets: path.resolve(__dirname, 'src/stylesheets')
 		}
 	},
 	module: {
@@ -52,10 +53,10 @@ module.exports = {
 		),
 		new WebpackNotifier(),
 		new HtmlWebpackPlugin({
-      		filename: path.resolve(__dirname, 'example/index.html' ),
-      		template: path.resolve(__dirname, 'index.html' ),
+			  filename: path.resolve(__dirname, 'example/index.html' ),
+			  template: path.resolve(__dirname, 'index.html' ),
 			inject: false,
-    	})
+		})
 	],
 	devtool: production ? false : 'source-map',
 };
