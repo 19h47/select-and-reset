@@ -16,7 +16,6 @@ export default class Checkbox {
 		this.$checkbox = this.$cont.querySelector('.js-checkbox').children[0];
 		this.$button = this.$cont.querySelector('.js-button');
 
-		this.value = this.$button.dataset.value;
 		this.isOpen = this.$cont.classList.contains('is-active');
 
 		this.initEvents();
