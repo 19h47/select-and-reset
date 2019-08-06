@@ -29,7 +29,7 @@ module.exports = {
 	devServer: {
 		contentBase: resolve('/'),
 		compress: true,
-		port: 9000,
+		port: 8080,
 		inline: true,
 		disableHostCheck: true
 	},

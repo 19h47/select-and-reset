@@ -131,7 +131,7 @@ export default class Result {
 		// Then remove item itself
 		element.remove();
 
-		// Finaly, update counter
+		// Finally, update counter
 		if (!this.$counter === false) {
 			this.updateCounter();
 		}
@@ -140,10 +140,8 @@ export default class Result {
 	}
 
 	reset() {
-		// eslint-disable-next-line
 		const children = this.$input.querySelectorAll('button');
-		// eslint-disable-next-line
-		const length = children.length;
+		const { length } = children.length;
 
 		for (let i = 0; i < length; i += 1) {
 			// Select associate filter
@@ -173,7 +171,6 @@ export default class Result {
 	 * @retrun
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
-	// eslint-disable-next-line
 	setTemplate(name) {
 		return this.options.template(name);
 	}
