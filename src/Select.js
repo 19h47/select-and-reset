@@ -159,8 +159,6 @@ export default class Select {
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	removeItem(element) {
-		// console.info('Select.removeItem');
-
 		const value = element.getAttribute('data-fake-value');
 		const $checkbox = this.$select.querySelector(`[data-value="${value}"]`);
 
@@ -190,6 +188,8 @@ export default class Select {
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	addItem(element, label) {
+		// console.info('Select.addItem');
+
 		const value = element.getAttribute('data-fake-value');
 		const $select = this.$select.querySelector(`[data-value="${value}"]`);
 

@@ -56,6 +56,7 @@ export default class Result {
 	 */
 	addItem(name, param) {
 		const item = document.createElement('button');
+		const addItemEvent = new CustomEvent('Result.addItem'); // eslint-disable-line no-undef
 
 		// Create wrapper
 		// @TODO Refactor this attributes
@@ -68,7 +69,9 @@ export default class Result {
 
 		// Attach click event
 		item.addEventListener('click', (event) => {
+			const removeItemEvent = new CustomEvent('Result.removeItem'); // eslint-disable-line no-undef
 			this.removeItem(event);
+			this.$cont.dispatchEvent(removeItemEvent);
 		});
 
 		// Append template to wrapper
@@ -81,6 +84,8 @@ export default class Result {
 		if (!this.$counter === false) {
 			this.updateCounter();
 		}
+
+		this.$cont.dispatchEvent(addItemEvent);
 	}
 
 

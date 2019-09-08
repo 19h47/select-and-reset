@@ -13,6 +13,7 @@
 		</style>
 	</head>
 	<body>
+
 		<div class="container">
 			<div class="row">
 
@@ -214,6 +215,40 @@
 				const SelectInstance = new SelectAndReset.Select(selects[i], { reset: false });
 				SelectInstance.init();
 			}
+
+			// On removeItem event
+			result.addEventListener('Result.removeItem', () => {
+				console.info('Result.removeItem');
+
+				const div = document.createElement('div');
+
+				div.className = 'alert alert-primary';
+				div.setAttribute('role', 'alert');
+				div.innerHTML = 'An element has been removed';
+
+				result.parentNode.insertBefore(div, result);
+
+				setTimeout(() => {
+					result.parentNode.removeChild(div);
+				}, 2000);
+			});
+
+			// On addItem event
+			result.addEventListener('Result.addItem', () => {
+				console.info('Result.addItem');
+
+				const div = document.createElement('div');
+
+				div.className = 'alert alert-success';
+				div.setAttribute('role', 'alert');
+				div.innerHTML = 'An element has been added';
+
+				result.parentNode.insertBefore(div, result);
+
+				setTimeout(() => {
+					result.parentNode.removeChild(div);
+				}, 2000);
+			});
 
 			// Checkbox
 			const checkboxes = document.querySelectorAll('.js-checkbox-and-reset');
