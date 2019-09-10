@@ -146,7 +146,7 @@ export default class Result {
 
 	reset() {
 		const children = this.$input.querySelectorAll('button');
-		const { length } = children.length;
+		const { length } = children;
 
 		for (let i = 0; i < length; i += 1) {
 			// Select associate filter

@@ -1,6 +1,6 @@
 {
 	"name": "select-and-reset",
-	"version": "4.0.3",
+	"version": "4.0.4",
 	"description": "Select and reset",
 	"main": "dist/main.js",
 	"scripts": {
