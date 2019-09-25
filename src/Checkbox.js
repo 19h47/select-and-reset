@@ -12,8 +12,7 @@ export default class Checkbox {
 		if (this.$cont === null || this.$cont === undefined) return false;
 
 		// DOM elements
-		// eslint-disable-next-line
-		this.$checkbox = this.$cont.querySelector('.js-checkbox').children[0];
+		[this.$checkbox] = this.$cont.querySelector('.js-checkbox').children;
 		this.$button = this.$cont.querySelector('.js-button');
 
 		this.isOpen = this.$cont.classList.contains('is-active');
