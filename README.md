@@ -11,7 +11,7 @@ An another module is shipped, **Checkbox**, and it allows to create _fake checkb
 ## Installation
 
 ```
-npm install select-and-reset
+yarn add select-and-reset
 ```
 
 ## Usage
@@ -28,10 +28,10 @@ The `Result.js` class takes an `DOM element` argument and an optional `object` c
 
 ```javascript
 
-const result = document.querySelector('.js-result');
+const $result = document.querySelector('.js-result');
 const options = {};
-const ResultInstance = new Result(result, options);
-ResultInstance.init();
+const result = new Result($result, options);
+result.init();
 
 ```
 
@@ -60,8 +60,8 @@ The `Select.js` class takes an `DOM element` argument.
 const selects = document.querySelectorAll('.js-select-and-reset');
 
 for (let i = 0; i < selects.length; i += 1) {
-	const SelectInstance = new Select(selects[i]);
-	SelectInstance.init();
+	const select = new Select(selects[i]);
+	select.init();
 }
 
 ```
@@ -75,21 +75,18 @@ The `Checkbox.js` class takes an `DOM element` argument.
 const checkboxes = document.querySelectorAll('.js-checkbox-and-reset');
 
 for (let i = 0; i < checkboxes.length; i += 1) {
-	const CheckboxInstance = new Checkbox(checkboxes[i]);
-	CheckboxInstance.init();
+	const checkbox = new Checkbox(checkboxes[i]);
+	checkbox.init();
 }
 
 ```
 
 ### Events
 
-```
-Result.removeItem
-```
-
-```
-Result.addItem
-```
+| Event             | Arguments | Description             |
+| ----------------- | --------- | ----------------------- |
+| Result.removeItem | name      | Return the current name |
+| Result.addItem    | name      | Return the current name |
 
 ## Example
 

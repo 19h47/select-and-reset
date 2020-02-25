@@ -1,22 +1,34 @@
 module.exports = {
-	parser: "babel-eslint",
+	root: true,
+	env: {
+		node: true,
+		browser: true,
+	},
+	extends: [
+		'standard',
+		'airbnb-base',
+	],
+	rules: {
+		'arrow-parens': ['error', 'as-needed'],
+		'no-console': 'off',
+		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+		'no-tabs': 0,
+		indent: ['error', 'tab', { SwitchCase: 1, ignoredNodes: ["TemplateLiteral"] }],
+		"template-curly-spacing": ["off"],
+		'no-param-reassign': ['error', { props: false }],
+		yoda: [2, 'always'],
+		"import/no-named-as-default": 0
+	},
+	parser: 'babel-eslint',
 	parserOptions: {
-		sourceType: "module",
-		allowImportExportEverywhere: true,
-		codeFrame: false
+		sourceType: 'module',
+		allowImportExportEverywhere: true
 	},
 	settings: {
-	  "import/resolver": {
-		  webpack: {
-			  config: 'config/webpack.common.js'
-		  },
+		'import/resolver': {
+			'webpack': {
+				'config': 'config/webpack.common.js'
+			},
 		}
 	},
-	extends: ["standard", "airbnb-base"],
-	rules:{
-		"no-console": 0,
-		indent: ["error", "tab"],
-		"no-tabs": 0,
-		"consistent-return": 1
-	},
-}
+};

@@ -1,15 +1,15 @@
+// Default template
+const template = name => `<span style="pointer-events: none;">${name}</span>`;
+
 /**
  * @file Result.js
  *
  * @param	obj		element		DOM element
- * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+ * @author	Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 export default class Result {
 	constructor(element, options) {
 		this.$cont = element;
-
-		// Default template
-		const template = name => `<span style="pointer-events: none;">${name}</span>`;
 
 		// Set default options
 		this.options = Object.assign({
@@ -20,7 +20,7 @@ export default class Result {
 
 	init() {
 		// If DOM element doesn't exist, no need to go further
-		if (this.$cont === null || this.$cont === undefined) return false;
+		if (null === this.$cont || undefined === this.$cont) return false;
 
 		this.$input = this.$cont.querySelector('.js-input');
 
@@ -52,26 +52,31 @@ export default class Result {
 	 *
 	 * @param	str		name
 	 * @param	str		param
-	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
 	 */
 	addItem(name, param) {
 		const item = document.createElement('button');
-		const addItemEvent = new CustomEvent('Result.addItem'); // eslint-disable-line no-undef
 
 		// Create wrapper
 		// @TODO Refactor this attributes
 		if (this.options.buttonClass) {
 			item.className += `${this.options.buttonClass}`;
 		}
+
 		item.setAttribute('data-children-name', name);
 		item.setAttribute('data-parent-name', param);
 		item.type = 'button';
 
 		// Attach click event
-		item.addEventListener('click', (event) => {
-			const removeItemEvent = new CustomEvent('Result.removeItem'); // eslint-disable-line no-undef
+		item.addEventListener('click', event => {
 			this.removeItem(event);
-			this.$cont.dispatchEvent(removeItemEvent);
+			this.$cont.dispatchEvent(
+				new CustomEvent('Result.removeItem', {
+					detail: {
+						name,
+					},
+				}),
+			);
 		});
 
 		// Append template to wrapper
@@ -81,11 +86,18 @@ export default class Result {
 		this.$input.appendChild(item);
 
 		// Update counter
-		if (!this.$counter === false) {
+		if (false === !this.$counter) {
 			this.updateCounter();
 		}
 
-		this.$cont.dispatchEvent(addItemEvent);
+		this.$cont.dispatchEvent(
+			new CustomEvent(
+				'Result.addItem',
+				{
+					detail: { name },
+				},
+			),
+		);
 	}
 
 
@@ -102,22 +114,21 @@ export default class Result {
 	/**
 	 * Result.removeItem
 	 *
-	 * @param	obj | str	event
-	 * @access	static
-	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+	 * @param	{Object|string}	event
+	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
 	 */
 	removeItem(event) {
 		let element = null;
 
 		// @TODO reorder this code
-		if (typeof event === 'string') {
+		if ('string' === typeof event) {
 			element = document.querySelector(`[data-children-name="${event}"]`);
 		} else {
 			element = event.target;
 		}
 
 		//
-		if (element === null) {
+		if (null === element) {
 			return false;
 		}
 
@@ -137,7 +148,7 @@ export default class Result {
 		element.remove();
 
 		// Finally, update counter
-		if (!this.$counter === false) {
+		if (false === !this.$counter) {
 			this.updateCounter();
 		}
 
@@ -163,7 +174,7 @@ export default class Result {
 			// Then remove item itself
 			children[i].remove();
 
-			if (!this.$counter === false) {
+			if (false === !this.$counter) {
 				this.updateCounter();
 			}
 		}
@@ -174,7 +185,7 @@ export default class Result {
 	 *
 	 * @param	str	name	options template
 	 * @retrun
-	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
 	 */
 	setTemplate(name) {
 		return this.options.template(name);

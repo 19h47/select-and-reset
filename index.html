@@ -217,14 +217,15 @@
 			}
 
 			// On removeItem event
-			result.addEventListener('Result.removeItem', () => {
+			result.addEventListener('Result.removeItem', event => {
 				console.info('Result.removeItem');
 
+				const { detail: { name } } = event;
 				const div = document.createElement('div');
 
 				div.className = 'alert alert-primary';
 				div.setAttribute('role', 'alert');
-				div.innerHTML = 'An element has been removed';
+				div.innerHTML = name + ' has been removed';
 
 				result.parentNode.insertBefore(div, result);
 
@@ -234,14 +235,15 @@
 			});
 
 			// On addItem event
-			result.addEventListener('Result.addItem', () => {
+			result.addEventListener('Result.addItem', event => {
 				console.info('Result.addItem');
 
+				const { detail: { name } } = event;
 				const div = document.createElement('div');
 
 				div.className = 'alert alert-success';
 				div.setAttribute('role', 'alert');
-				div.innerHTML = 'An element has been added';
+				div.innerHTML = name + ' has been added';
 
 				result.parentNode.insertBefore(div, result);
 

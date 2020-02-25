@@ -11,7 +11,7 @@ export default class Select {
 
 	init() {
 		// No need to go further if this.$cont doesn't exist
-		if (this.$cont === null || this.$cont === undefined) return false;
+		if (null === this.$cont || undefined === this.$cont) return false;
 
 		// DOM elements
 		this.$select = this.$cont.querySelector('.js-select');
@@ -32,7 +32,7 @@ export default class Select {
 		this.selectedOptions = [];
 
 		this.count = this.$options.length;
-		this.multiple = this.$cont.getAttribute('data-multiple') || true;
+		this.multiple = JSON.parse(this.$cont.getAttribute('data-multiple')) || true;
 
 		// Bind properties to the container object
 		this.$cont.addItem = this.addItem.bind(this);
@@ -63,7 +63,7 @@ export default class Select {
 
 		// CLick outside this.$cont
 		// @see https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
-		document.addEventListener('click', (event) => {
+		document.addEventListener('click', event => {
 			let targetElement = event.target; // clicked element
 
 			do {
@@ -139,7 +139,7 @@ export default class Select {
 		}
 
 		// If multiple is set to false
-		if (this.multiple === 'false') {
+		if (false === this.multiple) {
 			for (let i = 0; i < this.count; i += 1) {
 				this.removeItem(this.$options[i]);
 				this.$result.removeItem(this.$options[i].getAttribute('data-fake-label'));
@@ -246,7 +246,7 @@ export default class Select {
 	 * @author	Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	setCounter() {
-		if (this.selectedOptions.length > 0) {
+		if (0 < this.selectedOptions.length) {
 			this.$counter.classList.add('is-active');
 			this.$counter.innerHTML = this.selectedOptions.length;
 

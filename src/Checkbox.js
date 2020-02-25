@@ -1,6 +1,6 @@
 /**
  * @file Checkbox.js
- * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 export default class Checkbox {
 	constructor(element) {
@@ -9,7 +9,7 @@ export default class Checkbox {
 
 	init() {
 		// If DOM element doesn't exist, no need to go further
-		if (this.$cont === null || this.$cont === undefined) return false;
+		if (null === this.$cont || undefined === this.$cont) return false;
 
 		// DOM elements
 		[this.$checkbox] = this.$cont.querySelector('.js-checkbox').children;
