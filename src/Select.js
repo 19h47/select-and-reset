@@ -43,7 +43,6 @@ export default class Select {
 		return true;
 	}
 
-
 	/**
 	 * Selects.initEvents
 	 *
@@ -92,7 +91,6 @@ export default class Select {
 		}
 	}
 
-
 	/**
 	 * Select.onClick
 	 *
@@ -105,7 +103,6 @@ export default class Select {
 		return this.activateCont();
 	}
 
-
 	/**
 	 * Select.activateCont
 	 */
@@ -113,14 +110,12 @@ export default class Select {
 		return this.$cont.classList.add('is-active');
 	}
 
-
 	/**
 	 * Select.deactivateCont
 	 */
 	deactivateCont() {
 		return this.$cont.classList.remove('is-active');
 	}
-
 
 	/**
 	 * Select.onSelect
@@ -151,7 +146,6 @@ export default class Select {
 		return element.classList.add('is-selected');
 	}
 
-
 	/**
 	 * Select.removeItem
 	 *
@@ -179,7 +173,6 @@ export default class Select {
 		if (this.$counter) this.setCounter();
 	}
 
-
 	/**
 	 * Select.addItem
 	 *
@@ -205,7 +198,6 @@ export default class Select {
 		// If $counter element exist, udpate it
 		if (this.$counter) this.setCounter();
 	}
-
 
 	/**
 	 * Select.onPageReady
@@ -236,7 +228,6 @@ export default class Select {
 			this.$result.removeItem(this.$options[i].getAttribute('data-fake-label'));
 		}
 	}
-
 
 	/**
 	 * Select.setCounter

@@ -12,10 +12,11 @@ export default class Result {
 		this.$cont = element;
 
 		// Set default options
-		this.options = Object.assign({
+		this.options = {
 			template: options.template || template,
 			buttonClass: options.buttonClass,
-		}, options);
+			...options,
+		};
 	}
 
 	init() {
@@ -37,7 +38,6 @@ export default class Result {
 		return true;
 	}
 
-
 	initEvents() {
 		if (this.$reset) {
 			this.$reset.addEventListener('click', () => {
@@ -45,7 +45,6 @@ export default class Result {
 			});
 		}
 	}
-
 
 	/**
 	 * Result
@@ -91,15 +90,11 @@ export default class Result {
 		}
 
 		this.$cont.dispatchEvent(
-			new CustomEvent(
-				'Result.addItem',
-				{
-					detail: { name },
-				},
-			),
+			new CustomEvent('Result.addItem', {
+				detail: { name },
+			}),
 		);
 	}
-
 
 	/**
 	 * Update counter
@@ -109,7 +104,6 @@ export default class Result {
 	updateCounter() {
 		this.$counter.innerHTML = this.$input.children.length;
 	}
-
 
 	/**
 	 * Result.removeItem
