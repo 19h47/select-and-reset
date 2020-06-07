@@ -41,7 +41,6 @@ export default class Checkbox {
 		return this.activate();
 	}
 
-
 	/**
 	 * Checkbox.activate
 	 *
@@ -59,7 +58,6 @@ export default class Checkbox {
 
 		return true;
 	}
-
 
 	/**
 	 * Checkbox.deactivate
