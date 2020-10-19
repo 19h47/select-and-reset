@@ -1,8 +1,206 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><title>Select and reset</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"><style>.btn-outline-secondary.is-selected {
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Select and reset</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<style>
+			.btn-outline-secondary.is-selected {
 				color: #fff;
 				background-color: #6c757d;
 				border-color: #6c757d;
-			}</style></head><body><div class="container"><div class="row"><div class="col-12"><h1 class="my-5"><a href="https://github.com/19h47/select-and-reset">Select and reset</a></h1></div><div class="col-12"><form action=""><div class="card my-2 js-select-and-reset" data-param="musics"><div class="card-header"><h2 class="h5">Monsters</h2></div><div class="card-body"><button class="btn btn-primary d-inline-block mr-2 js-label" type="button">Monsters <span class="badge badge-light js-counter">0</span></button><button class="btn btn-outline-primary d-inline-blcok mr-2 js-reset" type="button">Reset</button><ul class="list-inline d-inline-block mb-0 js-fake-select"><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aarakocra" data-fake-label="Aarakocra">Aarakocra</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="basilisk" data-fake-label="Basilisk">Basilisk</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aboleth" data-fake-label="Aboleth">Aboleth</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="chimera" data-fake-label="Chimera">Chimera</button></li></ul></div><div class="js-select d-none"><input type="checkbox" name="monsters[]" value="aarakocra" data-value="aarakocra" data-label="Aarakocra"> <input type="checkbox" name="monsters[]" value="basilisk " data-value="basilisk" data-label="Basilisk"> <input type="checkbox" name="monsters[]" value="aboleth" data-value="aboleth" data-label="Aboleth"> <input type="checkbox" name="monsters[]" value="chimera" data-value="chimera" data-label="Chimera"></div></div><div class="card my-2 js-select-and-reset" data-param="greek-mythological-figures" data-multiple="false"><div class="card-header"><h2 class="h5">Greek mythological figures</h2></div><div class="card-body"><button class="btn btn-primary d-inline-block mr-2 js-label" type="button">Greek mythological figures</button><ul class="list-inline d-inline-block mb-0 js-fake-select"><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aphrodite" data-fake-label="Aphrodite">Aphrodite</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="zeus" data-fake-label="Zeus">Zeus</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="hades" data-fake-label="Hades">Hades</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="cyclopes" data-fake-label="Cyclopes">Cyclopes</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="asterion" data-fake-label="Asterion">Asterion</button></li></ul></div><div class="js-select d-none"><input type="checkbox" name="greek-mythological-figures[]" value="aphrodite" data-value="aphrodite" data-label="Aphrodite"> <input type="checkbox" name="greek-mythological-figures[]" value="zeus" data-value="zeus" data-label="Zeus"> <input type="checkbox" name="greek-mythological-figures[]" value="hades" data-value="hades" data-label="Hades"> <input type="checkbox" name="greek-mythological-figures[]" value="cyclopes" data-value="cyclopes" data-label="Cyclopes"> <input type="checkbox" name="greek-mythological-figures[]" value="asterion" data-value="asterion" data-label="Asterion"></div></div><div class="card my-1 js-select-and-reset" data-param="dogs"><div class="card-header"><h2 class="h5">Dogs</h2></div><div class="card-body"><button class="btn btn-primary d-inline-block mr-2 js-label" type="button">Dogs <span class="badge badge-light js-counter">0</span></button><ul class="list-inline d-inline-block mb-0 js-fake-select"><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="bouvier" data-fake-label="Bouvier">Bouvier</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="boxer" data-fake-label="Boxer">Boxer</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="corgi" data-fake-label="Corgi">Corgi</button></li><li class="list-inline-item"><button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="beagle" data-fake-label="Beagle">Beagle</button></li></ul></div><div class="js-select d-none"><input type="checkbox" name="dogs[]" value="bouvier" data-value="bouvier" data-label="Bouvier"> <input type="checkbox" name="dogs[]" value="boxer" data-value="boxer" data-label="Boxer"> <input type="checkbox" name="dogs[]" value="corgi" data-value="corgi" data-label="Corgi"> <input type="checkbox" name="dogs[]" value="beagle" data-value="beagle" data-label="Beagle"></div></div><div class="card my-2"><div class="card-header"><h2 class="h5">Checkboxes</h2></div><div class="card-body"><div class="d-inline-block js-checkbox-and-reset"><button class="btn btn-outline-secondary mr-2 js-button" type="button" data-value="Badass">Badass</button><div class="js-checkbox" style="display: none;"><input type="checkbox" name="badass" value="0" data-value="1" data-label="Badass"></div></div><div class="d-inline-block js-checkbox-and-reset"><button class="btn btn-outline-secondary mr-2 js-button" type="button" data-value="Wild">Wild</button><div class="js-checkbox d-none"><input type="checkbox" name="wild" value="0" data-value="1" data-label="Wild"></div></div></div></div><div class="js-result my-5"><button class="btn btn-primary mr-2" type="submit">Submit <span class="badge badge-light js-counter">0</span></button><button class="btn btn-outline-primary d-inline-blcok mr-2 js-reset" type="button">Reset</button><div class="d-inline-block js-input"></div></div></form></div></div></div><script src="main.js"></script><script>// Result
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-12">
+					<h1 class="my-5">
+						<a href="https://github.com/19h47/select-and-reset">
+							Select and reset
+						</a>
+					</h1>
+				</div>
+
+				<div class="col-12">
+					<form action="">
+						<div class="card my-2 js-select-and-reset" data-param="musics">
+							<div class="card-header"><h2 class="h5">Monsters</h2></div>
+							<div class="card-body">
+
+								<button class="btn btn-primary d-inline-block mr-2 js-label" type="button">
+									Monsters <span class="badge badge-light js-counter">0</span>
+								</button><!--
+
+							 --><button class="btn btn-outline-primary d-inline-blcok mr-2 js-reset" type="button">
+									Reset
+								</button><!--
+
+							 --><ul class="list-inline d-inline-block mb-0 js-fake-select">
+									<li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aarakocra" data-fake-label="Aarakocra">
+											Aarakocra
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="basilisk" data-fake-label="Basilisk">
+											Basilisk
+										</button>
+									 </li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aboleth" data-fake-label="Aboleth">
+											Aboleth
+										</button>
+									 </li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="chimera" data-fake-label="Chimera">
+											Chimera
+										</button>
+									</li>
+								</ul>
+							</div>
+
+							<div class="js-select d-none">
+								<input type="checkbox" name="monsters[]" value="aarakocra" data-value="aarakocra" data-label="Aarakocra">
+								<input type="checkbox" name="monsters[]" value="basilisk " data-value="basilisk" data-label="Basilisk">
+								<input type="checkbox" name="monsters[]" value="aboleth" data-value="aboleth" data-label="Aboleth">
+								<input type="checkbox" name="monsters[]" value="chimera" data-value="chimera" data-label="Chimera">
+							</div>
+						</div>
+
+						<div class="card my-2 js-select-and-reset" data-param="greek-mythological-figures" data-multiple="false">
+							<div class="card-header"><h2 class="h5">Greek mythological figures</h2></div>
+							<div class="card-body">
+
+								<button class="btn btn-primary d-inline-block mr-2 js-label" type="button">
+									Greek mythological figures
+								</button><!--
+
+							 --><ul class="list-inline d-inline-block mb-0 js-fake-select">
+									<li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="aphrodite" data-fake-label="Aphrodite">
+											Aphrodite
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="zeus" data-fake-label="Zeus">
+											Zeus
+										</button>
+									 </li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="hades" data-fake-label="Hades">
+											Hades
+										</button>
+									 </li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="cyclopes" data-fake-label="Cyclopes">
+											Cyclopes
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="asterion" data-fake-label="Asterion">
+											Asterion
+										</button>
+									</li>
+								</ul>
+							</div>
+
+							<div class="js-select d-none">
+								<input type="checkbox" name="greek-mythological-figures[]" value="aphrodite" data-value="aphrodite" data-label="Aphrodite">
+								<input type="checkbox" name="greek-mythological-figures[]" value="zeus" data-value="zeus" data-label="Zeus">
+								<input type="checkbox" name="greek-mythological-figures[]" value="hades" data-value="hades" data-label="Hades">
+								<input type="checkbox" name="greek-mythological-figures[]" value="cyclopes" data-value="cyclopes" data-label="Cyclopes">
+								<input type="checkbox" name="greek-mythological-figures[]" value="asterion" data-value="asterion" data-label="Asterion">
+							</div>
+						</div>
+
+						<div class="card my-1 js-select-and-reset" data-param="dogs">
+							<div class="card-header"><h2 class="h5">Dogs</h2></div>
+							<div class="card-body">
+
+								<button class="btn btn-primary d-inline-block mr-2 js-label" type="button">
+									Dogs <span class="badge badge-light js-counter">0</span>
+								</button><!--
+
+							 --><ul class="list-inline d-inline-block mb-0 js-fake-select">
+									<li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="bouvier" data-fake-label="Bouvier">
+											Bouvier
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="boxer" data-fake-label="Boxer">
+											Boxer
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="corgi" data-fake-label="Corgi">
+											Corgi
+										</button>
+									</li><!--
+								 --><li class="list-inline-item">
+										<button class="btn btn-outline-secondary js-fake-option" type="button" data-fake-value="beagle" data-fake-label="Beagle">
+											Beagle
+										</button>
+									</li>
+								</ul>
+							</div>
+
+							<div class="js-select d-none">
+								<input type="checkbox" name="dogs[]" value="bouvier" data-value="bouvier" data-label="Bouvier">
+								<input type="checkbox" name="dogs[]" value="boxer" data-value="boxer" data-label="Boxer">
+								<input type="checkbox" name="dogs[]" value="corgi" data-value="corgi" data-label="Corgi">
+								<input type="checkbox" name="dogs[]" value="beagle" data-value="beagle" data-label="Beagle">
+							</div>
+						</div>
+
+						<div class="card my-2">
+							<div class="card-header"><h2 class="h5">Checkboxes</h2></div>
+							<div class="card-body">
+								<div class="d-inline-block js-checkbox-and-reset">
+									<button class="btn btn-outline-secondary mr-2 js-button" type="button" data-value="Badass">
+										Badass
+									</button>
+
+									<div class="js-checkbox" style="display: none;">
+										<input type="checkbox" name="badass" value="0" data-value="1" data-label="Badass">
+									</div>
+								</div><!--
+							 --><div class="d-inline-block js-checkbox-and-reset">
+									<button class="btn btn-outline-secondary mr-2 js-button" type="button" data-value="Wild">
+										Wild
+									</button>
+
+									<div class="js-checkbox d-none">
+										<input type="checkbox" name="wild" value="0" data-value="1" data-label="Wild">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="js-result my-5">
+							<button class="btn btn-primary mr-2" type="submit">
+								Submit <span class="badge badge-light js-counter">0</span>
+							</button><!--
+
+						 --><button class="btn btn-outline-primary d-inline-blcok mr-2 js-reset" type="button">
+								Reset
+							</button><!--
+
+						 --><div class="d-inline-block js-input"></div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="main.js"></script>
+		<script>
+			// Result
 			const result = document.querySelector('.js-result');
 			const template = name => '<span class="" style="pointer-events: none;">' + name + '</span>';
 			const buttonClass = 'btn btn-outline-secondary mr-2';
@@ -60,4 +258,7 @@
 			for (let i = 0; i < checkboxes.length; i += 1) {
 				const CheckboxInstance = new SelectAndReset.Checkbox(checkboxes[i]);
 				CheckboxInstance.init();
-			}</script></body></html>
+			}
+		</script>
+	</body>
+</html>
